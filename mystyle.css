@@ -1,0 +1,25 @@
+nav {
+    display: inline-block;
+    width: 1920px;
+    height: 20px;
+    margin: 0;
+    border: 0;
+    padding: 10px;
+    background-color: white;
+    color: black;
+
+}
+.wraplink {
+    height: 15px;
+    width: 15px;
+    margin: 2px;
+    border-width: 2px 2px 0;
+    border-style: solid;
+    border-color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    background-color: blanchedalmond;
+}

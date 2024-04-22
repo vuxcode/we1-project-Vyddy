@@ -1,8 +1,9 @@
 # Time Report
 
-> Write about what you have done and how long you have worked on each part of the project.
+- 2024-04-22 Worked for 4 hours.
+    - Created Index, about, gamepage and mystyle.
+    - Functioning navbar for index and about
+    - Outline for index page, functioning link to gamepage. (missing image or iframe)
+    - Started on outline for about.
 
-For example: 
-
-- 2022-10-25 13:00 Worked for 1 hour.
-  - *List the things you have done.*
+  Work total: 4h.

@@ -6,15 +6,28 @@
     <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-    <nav>
-        <a class="wraplink" href="#">Home</a>
-        <a class="wraplink" href="#">About</a>
-    </nav>
-    <header>
-        <img src="">
-    </header>
-    <div>
-        <h1>Play Game</h1>
-        <button id="play"><a href="#"></a></button>
-    </div>
+    <main>
+        <nav>
+            <ul>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <header>
+            <img class="banner" src="namePlaceholder.png">
+        </header>
+        <div class="preview">
+            <h1>Play Game</h1>
+            <button class="playButton" onclick="document.location='gamepage.html'">▶</button>
+        </div>
+        <div class="text">
+            <h1>Heading</h1>
+            <p>Flavour text, <br>
+                story presentation <br> 
+                etc.</p>
+        </div>
+        <div>
+            <h2>A game by Sara</h2>
+        </div>
+    </main>
 </body>

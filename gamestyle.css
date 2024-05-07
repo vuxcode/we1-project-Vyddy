@@ -1,0 +1,87 @@
+/*Navbar*/
+nav {
+    display: inline-block;
+    border-width:2px;
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    margin: 20px;
+}
+body {
+    background-color: gray;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline-block;
+}
+li a {
+    padding: 13px 30px;
+    border-right-style: solid;
+    border-width: 0 2px 0 0;
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.4s;
+    font-size: large;
+}
+li button {
+    padding: 10px 30px;
+    border-right-style: solid;
+    border-width: 0 2px 0 0;
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+    transition-duration: 0.4s;
+    font-size: large;
+}
+#muteMusic {
+    border-right: 0;
+}
+li :hover {
+    background-color: gainsboro;
+    cursor: pointer;
+}
+/*Game*/
+.game {
+    width: 800px;
+    margin: auto;
+}
+.board {
+    background-color: grey;
+    margin: auto;
+}
+.story {
+    height: 200px;
+    width: 600px;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    margin-top: 10px;
+    background-color: white;
+}
+#textbox {
+    padding: 15px;
+    width: 570px;
+    margin-bottom: 15px;
+}
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 15px;
+    width:75%;
+}
+.optionButton {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    padding: 15px;
+    transition-duration: 0.4s;
+}
+.optionButton:hover {
+    background-color: black;
+    color: white;
+}

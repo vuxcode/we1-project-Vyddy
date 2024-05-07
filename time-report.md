@@ -7,3 +7,8 @@
     - Started on outline for about.
 
   Work total: 4h.
+
+- 2024-05-07 worked for 2 hours searching for a solution to a simple problem...
+      - moved sourced script from top of the body to the bottom in order to have the HTML load in before trying to access them from the code.
+
+  Work total 6h.

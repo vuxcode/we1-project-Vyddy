@@ -12,8 +12,9 @@ var optionButtons = [ob1, ob2, ob3, ob4];
 var id=0;
 var teaSet=false;
 var trap=false;
-var dragonNoticed=false;
 var forestScenario=false;
+var dragonNoticed=false;
+
 
 //Creating the array with game-pages as objects:
 const pages = [
@@ -42,16 +43,17 @@ const pages = [
     },
     {
         id:4,
-        Requirements: forestScenario=false,
-        Else: [{next:8}],
+        requirements: forestScenario==false,
+        else: {next:8},
+        setState: forestScenario=true,
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind her. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
             {op:"Help the hunters", next: 6},
             {op:"Do nothing", next: 7}
         ]
-    }
-
+    },
+   
 ]
 
 
@@ -108,10 +110,27 @@ function nextPage(){
             else {
                 console.log("Not registering any buttons.")
             }
-            showPage();
+            checkRequirements();
         });
     });
-} 
+};
+
+//Check requirements for a page
+function checkRequirements(){
+    if (pages[id]?.requirements) {
+        console.log(pages[id].requirements);
+        showPage();
+    }
+    else if (pages[id]?.else) {
+        id=pages[id].else[0].next;
+        showPage();
+    }
+    else {
+        console.log("No requirements or else-property exists.")
+        showPage();
+    }
+
+}
 
 //run the program
 showPage();

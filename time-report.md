@@ -20,3 +20,8 @@
       - started experimenting with array objects but it won't work.
 
   work total 9h.
+
+- 2024-05-10 worked for 2 hours
+      - added nextPage() and eventListener to ob1.
+      - Have a functional page-system for the intro and when there's only one option. :)
+  

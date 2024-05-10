@@ -13,6 +13,7 @@ var id=0;
 var teaSet=false;
 var trap=false;
 var dragonNoticed=false;
+var forestScenario=false;
 
 //Creating the array with game-pages as objects:
 const pages = [
@@ -35,10 +36,21 @@ const pages = [
         id:3,
         text: "You come to a crossroads. Where do you go?",
         options: [
-            {op:"Forest", next:2}, 
+            {op:"Forest", next:4}, 
             {op:"Mountains", next:1}
-        ],
+        ]
     },
+    {
+        id:4,
+        Requirements: forestScenario=false,
+        Else: [{next:8}],
+        text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind her. What do you do?",
+        options: [
+            {op:"Help the fairy", next: 5},
+            {op:"Help the hunters", next: 6},
+            {op:"Do nothing", next: 7}
+        ]
+    }
 
 ]
 
@@ -64,9 +76,11 @@ else {
 if (ob3.innerText == "") {
     ob3.style.display = "none";
 }
+else {ob3.style.display=""};
 if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
+else {ob4.style.display=""};
 };
 
 //Changes values to show the next page

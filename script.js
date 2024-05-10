@@ -14,25 +14,22 @@ var teaSet=false;
 var trap=false;
 var dragonNoticed=false;
 
-//Creating the array with game-pages:
+//Creating the array with game-pages as objects:
 const pages = [
     {
         id:0,
         text: "You accept a quest from the nearby village",
-        options: [{op:">>>"}],
-        next:1
+        options: [{op:">>>", next:1}]        
     },
     {
         id:1,
         text: "The town has been terrorized by a dragon and has asked you to get rid of it.",
-        options: [{op:">>>"}],
-        next:2
+        options: [{op:">>>", next:2}]        
     },
     {
         id:2,
         text: "Promising to rid this village from the dragon, you grab your sword and journey towards the mountains.",
-        options: [{op:"Begin"}],
-        next:3
+        options: [{op:"Begin", next:3}]        
     },
     {
         id:3,
@@ -41,7 +38,6 @@ const pages = [
             {op:"Forest", next:2}, 
             {op:"Mountains", next:1}
         ],
-        next:2
     },
 
 ]
@@ -77,9 +73,27 @@ ob4.style.display = "none";
 function nextPage(){
     optionButtons.forEach(button => {
         button.addEventListener("click", function() {
-            console.log("Current id:", id);
-            id = pages[id].next;
-            console.log("New id:", id);
+            console.log("old id:", id);
+            //Check which button is pushed
+            if (button=ob1) {
+                id = pages[id].options[0].next;
+                console.log("New id:", id + " ob1");
+            }
+            else if (button=ob2) {
+                id = pages[id].options[1].next;
+                console.log("New id:", id + " ob2");
+            }
+            else if (button=ob3) {
+                id = pages[id].options[2].next;
+                console.log("New id:", id + " ob3");
+            }
+            else if (button=ob4) {
+                id = pages[id].options[3].next;
+                console.log("New id:", id + " ob4");
+            }
+            else {
+                console.log("Not registering any buttons.")
+            }
             showPage();
         });
     });

@@ -45,7 +45,6 @@ const pages = [
         id:4,
         requirements: forestScenario==false,
         else: {next:8},
-        setState: forestScenario=true,
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind her. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -55,16 +54,19 @@ const pages = [
     },
     {
         id:5,
-        setState: teaSet=true,
         text: "You step in between the fleeing fairy and scare off the hunters. The fairy thanks you and magically produces a thank-you-gift in the shape of a porceline tea set. You gratefully accept and get on your way.",
         options:[{op:"Go back", next:3}]
     },
     {
         id: 6,
-        setState: trap=true,
         text: "You block the fairy and help the hunters put her in a cage knowing the profit on fairy-dust. The hunters thank you by giving you one of their traps. It needs some time to set up but maybe you can use it.",
         options:[{op:"Go back", next:3}]
     },
+    {
+        id: 8,
+        text: "There's no one left.",
+        options: [{op: "Go back", next:3}]
+    }
 
 ]
 
@@ -122,6 +124,7 @@ function nextPage(){
             else {
                 console.log("Not registering any buttons.")
             }
+            setState()
             checkRequirements();
         });
     });
@@ -147,6 +150,20 @@ function checkRequirements(){
     }
 
 };
+
+//Change variables if a page is reached.
+function setState() {
+    if (id==4) {
+        forestScenario=true;
+    };
+    if (id==5) {
+        teaSet=true;
+    };
+    if (id==6) {
+        trap=true;
+    };
+};
+
 
 //run the program
 showPage();

@@ -53,7 +53,19 @@ const pages = [
             {op:"Do nothing", next: 7}
         ]
     },
-   
+    {
+        id:5,
+        setState: teaSet=true,
+        text: "You step in between the fleeing fairy and scare off the hunters. The fairy thanks you and magically produces a thank-you-gift in the shape of a porceline tea set. You gratefully accept and get on your way.",
+        options:[{op:"Go back", next:3}]
+    },
+    {
+        id: 6,
+        setState: trap=true,
+        text: "You block the fairy and help the hunters put her in a cage knowing the profit on fairy-dust. The hunters thank you by giving you one of their traps. It needs some time to set up but maybe you can use it.",
+        options:[{op:"Go back", next:3}]
+    },
+
 ]
 
 
@@ -117,6 +129,10 @@ function nextPage(){
 
 //Check requirements for a page
 function checkRequirements(){
+    console.log("forestScenario = " + forestScenario + "\n" + 
+        "TeaSet = " + teaSet + "\n" + 
+        "Trap = " + trap + "\n" + 
+        "dragonNoticed = " + dragonNoticed);
     if (pages[id]?.requirements) {
         console.log(pages[id].requirements);
         showPage();
@@ -130,7 +146,7 @@ function checkRequirements(){
         showPage();
     }
 
-}
+};
 
 //run the program
 showPage();

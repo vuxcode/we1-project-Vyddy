@@ -8,27 +8,40 @@ var ob3 = document.getElementById('ob3')
 var ob4 = document.getElementById('ob4')
 
 //creating variables
+var optionButtons = [ob1, ob2, ob3, ob4];
 var id=0;
+var teaSet=false;
+var trap=false;
+var dragonNoticed=false;
 
 //Creating the array with game-pages:
 const pages = [
     {
         id:0,
-        skrift: "You accept a quest from the nearby village",
-        op1: ">>>",
+        text: "You accept a quest from the nearby village",
+        options: [{op:">>>"}],
         next:1
     },
     {
         id:1,
-        skrift: "The town has been terrorized by a dragon and has asked you to get rid of it.",
-        op1: ">>>",
+        text: "The town has been terrorized by a dragon and has asked you to get rid of it.",
+        options: [{op:">>>"}],
         next:2
     },
     {
         id:2,
-        skrift: "Promising to rid this village from the dragon, you grab your sword and journey towards the mountains.",
-        op1: "Begin",
+        text: "Promising to rid this village from the dragon, you grab your sword and journey towards the mountains.",
+        options: [{op:"Begin"}],
         next:3
+    },
+    {
+        id:3,
+        text: "You come to a crossroads. Where do you go?",
+        options: [
+            {op:"Forest", next:2}, 
+            {op:"Mountains", next:1}
+        ],
+        next:2
     },
 
 ]
@@ -38,32 +51,38 @@ const pages = [
 
 //Updates the board to the correct page
 function showPage() {
-textbox.innerText = pages[id].skrift;
-ob1.innerText = pages[id].op1;
-ob2.innerText = pages[id].op2;
-ob3.innerText = pages[id].op3;
-ob4.innerText = pages[id].op4;
+textbox.innerText = pages[id].text;
+ob1.innerText = pages[id].options[0].op;
+ob2.innerText = pages[id].options?.[1]?.op||"";
+ob3.innerText = pages[id].options?.[2]?.op||"";
+ob4.innerText = pages[id].options?.[3]?.op||"";
 //Hides the unused buttons
-if (ob2.innerText == "undefined") {
+if (ob2.innerText == "") {
     ob2.style.display = "none";
     ob1.style.width = "604px";
 }
-if (ob3.innerText == "undefined") {
+else {
+    ob2.style.display="block"; 
+    ob1.style.width="";
+}
+if (ob3.innerText == "") {
     ob3.style.display = "none";
 }
-if (ob4.innerText == "undefined") {
+if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 };
 
 //Changes values to show the next page
 function nextPage(){
-    ob1.addEventListener("click", function() {
-        console.log("Current id:", id);
-        id = pages[id].next;
-        console.log("New id:", id);
-        showPage();
-    })
+    optionButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            console.log("Current id:", id);
+            id = pages[id].next;
+            console.log("New id:", id);
+            showPage();
+        });
+    });
 } 
 
 //run the program

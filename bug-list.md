@@ -8,6 +8,7 @@
 3. Code "textbox.innerText = content.skrift;" not working
    - Fixed by adding the array position: "textbox.innerText = content[0].skrift;"
 4. nextPage() always registering ob1.
+   - Fixed by using "==" instead of "="... (not the first time this project.)
 
 //Webbutveckling
 1. Nav buttons in gamepage.html aren't the right size.

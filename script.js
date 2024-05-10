@@ -75,19 +75,19 @@ function nextPage(){
         button.addEventListener("click", function() {
             console.log("old id:", id);
             //Check which button is pushed
-            if (button=ob1) {
+            if (button==ob1) {
                 id = pages[id].options[0].next;
                 console.log("New id:", id + " ob1");
             }
-            else if (button=ob2) {
+            else if (button==ob2) {
                 id = pages[id].options[1].next;
                 console.log("New id:", id + " ob2");
             }
-            else if (button=ob3) {
+            else if (button==ob3) {
                 id = pages[id].options[2].next;
                 console.log("New id:", id + " ob3");
             }
-            else if (button=ob4) {
+            else if (button==ob4) {
                 id = pages[id].options[3].next;
                 console.log("New id:", id + " ob4");
             }

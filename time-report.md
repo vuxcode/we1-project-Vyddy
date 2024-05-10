@@ -14,3 +14,9 @@
       - started organising showPage()
       
   Work total 7h.
+
+- 2024-05-09 worked for 2hours
+      - organised the pages in my notes and added info to be transferred into the arrays.
+      - started experimenting with array objects but it won't work.
+
+  work total 9h.

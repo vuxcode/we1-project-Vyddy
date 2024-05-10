@@ -7,19 +7,37 @@ var ob2 = document.getElementById('ob2')
 var ob3 = document.getElementById('ob3')
 var ob4 = document.getElementById('ob4')
 
-//Creating the gamepage arrays
-const pages = ["empty", "Text description", "Option1", "option 2", "option 3"];
+/* //Creating the gamepage arrays
+const pages = ["intro1", "intro2", "intro3", "crossroads", "forest1"];
+const image = [];
+const text = [
+"You accept a quest from the nearby village.",
+"You promise them to get rid of the dragon-issue they've been having.",
+"You grip your sword tightly in your hand. You will not fail."
+]
+const option1 = [];
+const option2 = [];
+const option3 = [];
+const option4 = []; */
+
+const content = [
+    {
+        id:1,
+        skrift: "You accept a quest from the nearby village",
+         op1: ">>>"},
+
+]
 
 
 //Creating the functions:
 
 //Updates the board to the correct page
 function showPage() {
-textbox.innerText = pages[1];
-ob1.innerText = pages[2];
-ob2.innerText = pages[3];
-ob3.innerText = pages[4];
-ob4.innerText = pages[5];
+textbox.innerHTML = content.skrift;
+ob1.innerText = content.op1;
+ob2.innerText = "pages[3]";
+ob3.innerText = "pages[4]";
+ob4.innerText = "pages[5]";
 //Hides the unused elements
 if (ob2.innerText == "undefined") {
     ob2.style.display = "none";

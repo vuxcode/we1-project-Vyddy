@@ -34,3 +34,7 @@ Work total: 13h.
       - added intro pictures and if-statement (not working currently)
       - changed to picturebox.src to edit inside the element.
       - unsuccessfully tried to fix some bugs.
+  Work total: 16h.
+
+- 2024-05-14 worked for 2 hours
+      - 

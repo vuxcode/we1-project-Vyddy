@@ -37,4 +37,7 @@ Work total: 13h.
   Work total: 16h.
 
 - 2024-05-14 worked for 2 hours
-      - 
+      - Added setState() and worked on checkRequirements.
+      - Had the intro pictures functional at some point during this stage.
+      - Broke the showPage somehow.
+  Work total: 18h.

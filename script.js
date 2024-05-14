@@ -20,16 +20,19 @@ var dragonNoticed=false;
 const pages = [
     {
         id:0,
+        image: "intro1.jpg",
         text: "You accept a quest from the nearby village",
         options: [{op:">>>", next:1}]        
     },
     {
         id:1,
+        image: "intro2.jpg",
         text: "The town has been terrorized by a dragon and has asked you to get rid of it.",
         options: [{op:">>>", next:2}]        
     },
     {
         id:2,
+        image: "intro3.jpg",
         text: "Promising to rid this village from the dragon, you grab your sword and journey towards the mountains.",
         options: [{op:"Begin", next:3}]        
     },
@@ -43,9 +46,9 @@ const pages = [
     },
     {
         id:4,
-        requirements: forestScenario==false,
+        requirements: forestScenario===false,
         else: {next:8},
-        text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind her. What do you do?",
+        text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
             {op:"Help the hunters", next: 6},
@@ -75,6 +78,10 @@ const pages = [
 
 //Updates the board to the correct page
 function showPage() {
+if (id>2) {
+    picturebox.innerHTML = "<img src="+ pages[id].image + ">"
+}
+console.log( picturebox.innerHTML = "<img src="+ pages[id].image + ">");
 textbox.innerText = pages[id].text;
 ob1.innerText = pages[id].options[0].op;
 ob2.innerText = pages[id].options?.[1]?.op||"";
@@ -124,8 +131,8 @@ function nextPage(){
             else {
                 console.log("Not registering any buttons.")
             }
-            setState()
             checkRequirements();
+            setState();
         });
     });
 };

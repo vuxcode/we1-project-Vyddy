@@ -30,3 +30,5 @@ Work total: 11h.
       - Moved setState from array to a separate function.
 Work total: 13h.
   
+- 2024-05-14 worked from 13.30
+      - added intro pictures and if-statement (not working currently)

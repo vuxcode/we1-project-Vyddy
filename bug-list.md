@@ -10,6 +10,8 @@
 4. nextPage() always registering ob1.
    - Fixed by using "==" instead of "="... (not the first time this project.)
 5. Requirements in array not working.
+6. intro pictures seen in elements but not on screen.
+7. if-statement for intro picture id>2 not working.
 
 //Webbutveckling
 1. Nav buttons in gamepage.html aren't the right size.

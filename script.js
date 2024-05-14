@@ -10,10 +10,9 @@ var ob4 = document.getElementById('ob4')
 //creating variables
 var optionButtons = [ob1, ob2, ob3, ob4];
 var id=0;
-var teaSet=false;
-var trap=false;
-var forestScenario=false;
-var dragonNoticed=false;
+
+//Set an empty state for the player
+var state = {};
 
 
 //Creating the array with game-pages as objects:
@@ -46,8 +45,8 @@ const pages = [
     },
     {
         id:4,
-        requirements: forestScenario===false,
-        else: {next:8},
+        else: 8,
+        setState: forestScenario=true,
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -58,12 +57,12 @@ const pages = [
     {
         id:5,
         text: "You step in between the fleeing fairy and scare off the hunters. The fairy thanks you and magically produces a thank-you-gift in the shape of a porceline tea set. You gratefully accept and get on your way.",
-        options:[{op:"Go back", next:3}]
+        options:[{op:"Go back", next:3, setState: teaSet=true}]
     },
     {
         id: 6,
         text: "You block the fairy and help the hunters put her in a cage knowing the profit on fairy-dust. The hunters thank you by giving you one of their traps. It needs some time to set up but maybe you can use it.",
-        options:[{op:"Go back", next:3}]
+        options:[{op:"Go back", next:3, setState: trap=true}]
     },
     {
         id: 8,
@@ -78,10 +77,13 @@ const pages = [
 
 //Updates the board to the correct page
 function showPage() {
-if (id>2) {
-    picturebox.innerHTML = "<img src="+ pages[id].image + ">"
-}
-console.log( picturebox.innerHTML = "<img src="+ pages[id].image + ">");
+//show picture if id>2
+    if (id<=2) {
+        picturebox.src = pages[id].image;
+    }
+    else {picturebox.src="";}
+console.log("img src="+ pages[id].image);
+//show text & options
 textbox.innerText = pages[id].text;
 ob1.innerText = pages[id].options[0].op;
 ob2.innerText = pages[id].options?.[1]?.op||"";
@@ -104,7 +106,13 @@ if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 else {ob4.style.display=""};
-};
+//hides the unused picturebox
+if (picturebox.src="") {
+    picturebox.display = "none";
+}
+else {picturebox.display = "";}
+setState()
+}
 
 //Changes values to show the next page
 function nextPage(){
@@ -131,49 +139,34 @@ function nextPage(){
             else {
                 console.log("Not registering any buttons.")
             }
-            checkRequirements();
-            setState();
         });
     });
 };
 
 //Check requirements for a page
 function checkRequirements(){
-    console.log("forestScenario = " + forestScenario + "\n" + 
+/*     console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
         "Trap = " + trap + "\n" + 
-        "dragonNoticed = " + dragonNoticed);
-    if (pages[id]?.requirements) {
-        console.log(pages[id].requirements);
-        showPage();
-    }
-    else if (pages[id]?.else) {
-        id=pages[id].else[0].next;
-        showPage();
-    }
-    else {
-        console.log("No requirements or else-property exists.")
-        showPage();
-    }
-
+        "dragonNoticed = " + dragonNoticed); */
+   if (id==4 && forestScenario==true) {
+        id=pages[id].else
+   }
+showPage()
 };
 
 //Change variables if a page is reached.
 function setState() {
-    if (id==4) {
-        forestScenario=true;
-    };
-    if (id==5) {
-        teaSet=true;
-    };
-    if (id==6) {
-        trap=true;
-    };
+    if (pages[id].setState == true) {
+        state = Object.assign(state, pages[id].setState);
+        console.log(state)
+    }
 };
 
 
 //run the program
-showPage();
+checkRequirements()
 nextPage();
+
 
 

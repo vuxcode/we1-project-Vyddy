@@ -23,12 +23,14 @@
       - Have a functional page-system for the intro and when there's only one option. :)
 Work total: 11h.
 
-- 2024-05-10 worked for 2 hour
+- 2024-05-10 worked for 2 hours
       - Added forEach() to nextPage() so each button works.
       - Added optional chaining (?.) to showPage() to allow an undefined value rather than create a new object in the array.
       - Added else-statements to restore hidden buttons when they're defined.
       - Moved setState from array to a separate function.
 Work total: 13h.
   
-- 2024-05-14 worked from 13.30
+- 2024-05-14 worked for 3 hours
       - added intro pictures and if-statement (not working currently)
+      - changed to picturebox.src to edit inside the element.
+      - unsuccessfully tried to fix some bugs.

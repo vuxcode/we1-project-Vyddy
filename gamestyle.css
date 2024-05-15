@@ -38,9 +38,6 @@ li button {
     transition-duration: 0.4s;
     font-size: large;
 }
-#muteMusic {
-    border-right: 0;
-}
 li :hover {
     background-color: gainsboro;
     cursor: pointer;
@@ -52,7 +49,6 @@ li :hover {
 }
 .board {
     background-color: grey;
-    margin: auto;
 }
 .story {
     border-width: 2px;
@@ -62,8 +58,8 @@ li :hover {
     background-color: white;
 }
 #textbox {
-    padding: 15px;
-    width: 570px;
+    padding: 30px;
+    width: 540px;
     height: fit-content;
     margin-bottom: 15px;
 }

@@ -90,7 +90,7 @@ const pages = [
     }, 
     {
         id: 10,
-        else: 19,
+        else: 21,
         text: "The dragon seems suspicious but invites you in for a chat.",
         options: [{op: ">>>", next:11}]
     }, 
@@ -108,7 +108,7 @@ const pages = [
     {
         id:13,
         else: 15,
-        text: "You hide behind a big rock and bide your time. Eventually the dragon leaves it's lair and flies away - giving you full access to set something up...",
+        text: "You hide behind a big rock and bide your time. Eventually the dragon leaves its lair and flies away - giving you full access to set something up...",
         options: [
             {op: "Ambush!", next: 16},
             //If teaSet==true
@@ -148,7 +148,7 @@ const pages = [
     {
         id:18,
         text: "Before you release the dragon from your trap you set your terms: the village will no longer be part of its hunting grounds and you'll walk out of here safely. Reluctantly the dragon agrees - mercy for mercy.",
-        options: [{op: "play again", next: -1}]
+        options: [{op: "Play again", next: -1}]
     },
     {
         id: 19,
@@ -222,6 +222,13 @@ if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 else {ob4.style.display=""};
+//hide ob2 & ob3 if conditions are met
+if (id==13 && teaSet==false) {
+    ob2.style.display="none";
+   }
+   if (id==13 && trap==false) {
+    ob3.style.display="none";
+   }
 //Update values
 if (id==4) {
     forestScenario=true;
@@ -231,6 +238,9 @@ else if (id==5) {
 }
 else if (id==6) {
     trap=true;
+}
+else if (id==11) {
+    dragonNotified=true;
 }
 }
 
@@ -269,20 +279,20 @@ function nextPage(){
 
 //Check requirements for a page
 function checkRequirements(){
+    //Update console.log
     console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
         "Trap = " + trap + "\n" +
         "dragonNotified = " + dragonNotified
     );
-
-   if (id==4 && forestScenario==true || id==10 && dragonNotified==true || id==13 && dragonNotified==true) {
+//Conditions for id=else
+   if (
+    id==4 && forestScenario==true || 
+    id==10 && dragonNotified==true ||
+    id==11 && teaSet==true || 
+    id==13 && dragonNotified==true ||
+    id==16 && dragonNotified==true) {
         id=pages[id].else;
-   }
-   if (id==11) {
-        dragonNotified=true;
-        if (teaSet==true) {
-            id=pages[id].else;
-        }
    }
 };
 

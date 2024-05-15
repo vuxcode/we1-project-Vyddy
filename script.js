@@ -40,13 +40,13 @@ const pages = [
         text: "You come to a crossroads. Where do you go?",
         options: [
             {op:"Forest", next:4}, 
-            {op:"Mountains", next:1}
+            {op:"Mountains", next:9}
         ]
     },
     {
         id:4,
         else: 8,
-        setState: forestScenario=true,
+        //setState: forestScenario=true,
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -68,6 +68,11 @@ const pages = [
         id: 8,
         text: "There's no one left.",
         options: [{op: "Go back", next:3}]
+    },
+    {
+        id: 9,
+        text: "You go to the mountains and kill the dragon. Good job!",
+        options: [{op: "Reset", next:-1}]
     }
 
 ]
@@ -77,14 +82,25 @@ const pages = [
 
 //Updates the board to the correct page
 function showPage() {
+//reset if id<0
+    if (id<0) {
+        id=0;
+        state = {};
+        showPage();
+    }
 //show picture if id>2
     if (id<=2) {
         picturebox.src = pages[id].image;
+        picturebox.display="";
     }
-    else {picturebox.src="";}
+    //not working:
+    else {
+        picturebox.display="none";
+    }
 console.log("img src="+ pages[id].image);
 //show text & options
 textbox.innerText = pages[id].text;
+console.log(pages[id].text);
 ob1.innerText = pages[id].options[0].op;
 ob2.innerText = pages[id].options?.[1]?.op||"";
 ob3.innerText = pages[id].options?.[2]?.op||"";
@@ -106,12 +122,7 @@ if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 else {ob4.style.display=""};
-//hides the unused picturebox
-if (picturebox.src="") {
-    picturebox.display = "none";
-}
-else {picturebox.display = "";}
-setState()
+//setState();
 }
 
 //Changes values to show the next page
@@ -123,18 +134,22 @@ function nextPage(){
             if (button==ob1) {
                 id = pages[id].options[0].next;
                 console.log("New id:", id + " ob1");
+                showPage();
             }
             else if (button==ob2) {
                 id = pages[id].options[1].next;
                 console.log("New id:", id + " ob2");
+                showPage();
             }
             else if (button==ob3) {
                 id = pages[id].options[2].next;
                 console.log("New id:", id + " ob3");
+                showPage();
             }
             else if (button==ob4) {
                 id = pages[id].options[3].next;
                 console.log("New id:", id + " ob4");
+                showPage();
             }
             else {
                 console.log("Not registering any buttons.")
@@ -144,28 +159,28 @@ function nextPage(){
 };
 
 //Check requirements for a page
-function checkRequirements(){
-/*     console.log("forestScenario = " + forestScenario + "\n" + 
+/* function checkRequirements(){
+    console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
         "Trap = " + trap + "\n" + 
-        "dragonNoticed = " + dragonNoticed); */
+        "dragonNoticed = " + dragonNoticed);
    if (id==4 && forestScenario==true) {
-        id=pages[id].else
+        id=pages[id].else;
    }
 showPage()
-};
+}; */
 
-//Change variables if a page is reached.
+/* //Change variables if a page is reached.
 function setState() {
     if (pages[id].setState == true) {
         state = Object.assign(state, pages[id].setState);
         console.log(state)
     }
-};
+}; */
 
 
 //run the program
-checkRequirements()
+showPage();
 nextPage();
 
 

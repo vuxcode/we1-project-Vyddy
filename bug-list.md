@@ -16,6 +16,7 @@
    - fixed by cleaning up code. Not entirely sure what the problem was.
 8. if-statement for intro picture id>2 not working.
    - fixed by using it correctly (id<2) but scrapped in favour of if (pages[id].image) to check if the page has an image rather than a conditional id.
+9. Picturebox.display="none" not hiding the picturebox.
 
 //Webbutveckling
 1. Nav buttons in gamepage.html aren't the right size.

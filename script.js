@@ -10,6 +10,11 @@ var ob4 = document.getElementById('ob4')
 //creating variables
 var optionButtons = [ob1, ob2, ob3, ob4];
 var id=0;
+var forestScenario = false;
+var teaSet = false;
+var trap = false;
+var dragonNotified = false;
+
 
 
 //Creating the array with game-pages as objects:
@@ -43,7 +48,6 @@ const pages = [
     {
         id:4,
         else: 7,
-        setState: {set: forestScenario=true},
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -53,13 +57,11 @@ const pages = [
     },
     {
         id:5,
-        setState: teaSet = true,
         text: "You step in between the fleeing fairy and scare off the hunters. The fairy thanks you and magically produces a thank-you-gift in the shape of a porceline tea set. You gratefully accept and get on your way.",
         options:[{op:"Go back", next:3}]
     },
     {
         id: 6,
-        setState: trap = true,
         text: "You block the fairy and help the hunters put her in a cage knowing the profit on fairy-dust. The hunters thank you by giving you one of their traps. It needs some time to set up but maybe you can use it.",
         options:[{op:"Go back", next:3}]
     },
@@ -73,32 +75,62 @@ const pages = [
         text: "You journey to the dragon's lair. How do you approach?",
         options: [
             {op: "Attack", next: 9},
-            {op: "Knock", next: 3}
+            {op: "Knock", next: 10},
+            {op: "Wait for it to leave", next: 13}
         ]
     },
     {
         id: 9,
         text: "You brandish your sword. How do you attack?",
         options: [
-        {op: "With your hood low... sneaky.", next: 21},
-        {op: "You charge... FOR GLORY!", next:3}
+        {op: "With your hood low... sneaky.", next: 18},
+        {op: "You charge... FOR GLORY!", next:22}
+        ]
+    }, 
+    {
+        id: 10,
+        else: 19,
+        text: "The dragon seems suspicious but invites you in for a chat.",
+        options: [{op: ">>>", next:11}]
+    }, 
+    {
+        id: 11,
+        else: 12,
+        text: "The conversation starts out with some stiff small-talk until you take the opportunity to present the village's demands. During this you manage to make a drakecist comment and the sour mood shifts for the worse. You're thrown out and warned not to come back!",
+        options: [{op: "Leave", next:3}]
+    },
+    {
+        id: 12,
+        text: "The conversation starts out with some stiff small-talk until you remember the tea set and ask if you may prepare some tea. Hesitantly the dragon agrees and not long after friendly conversation comes easily. You present the villagers perspective and you both agree on some terms. The dragon won't attack the village and you'll stop by from time to time for some afternoon-tea.",
+        options: [{op: "Play again", next:-1}]
+    },
+    {
+        id:13,
+        else: 16,
+        text: "You hide behind a big rock and bide your time. Eventually the dragon leaves it's lair and flies away - giving you full access to set something up...",
+        options: [
+            {op: "Ambush!", next: 18}
         ]
     },
     {
-        id: 21,
-        text: "Your sneaky approach gains you the upper hand.",
-        options: [
-            {op: "reset", next:-1}
-        ]
-    }
+        id: 18,
+        else: 27,
+        text: "Your sneaky ambush is succesfull in giving you the upper hand and helps you slay the dragon and complete your task. The town is safe!",
+        options: [{op: "Play again", next:-1}]
+    },
+    {
+        id: 19,
+        text: "You'd been warned not to show yourself again. You pay the consequences and are greeted by burning hot flames. You're dead.",
+        options: [{op: "reset", next:-1}]
+    },
+    {
+        id: 24,
+        text: "The dragon knew you were coming.",
+        options: [{op: "reset", next:-1}]
+    },
+
 
 ]
-
-//Set an empty state for the player
-var state = {}
-var forestScenario = false;
-var teaSet = false;
-var trap = false;
 
 //Creating the functions:
 
@@ -113,7 +145,7 @@ checkRequirements();
         showPage();
     }
 //show picture if id>2
-    if (id<=2) {
+    if (pages[id].image) {
         picturebox.src = pages[id].image;
         picturebox.display="";
     }
@@ -124,7 +156,6 @@ checkRequirements();
     }
 //show text & options
 textbox.innerText = pages[id].text;
-console.log(pages[id].text);
 ob1.innerText = pages[id].options[0].op;
 ob2.innerText = pages[id].options?.[1]?.op||"";
 ob3.innerText = pages[id].options?.[2]?.op||"";
@@ -146,7 +177,16 @@ if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 else {ob4.style.display=""};
-setState();
+//Update values
+if (id==4) {
+    forestScenario=true;
+}
+else if (id==5) {
+    teaSet=true;
+}
+else if (id==6) {
+    trap=true;
+}
 }
 
 //Changes values to show the next page
@@ -183,25 +223,22 @@ function nextPage(){
 };
 
 //Check requirements for a page
-    //not working:
 function checkRequirements(){
     console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
-        "Trap = " + trap + "\n" 
-       //"dragonNoticed = " + dragonNoticed
+        "Trap = " + trap + "\n" +
+        "dragonNotified = " + dragonNotified
     );
-   if (id==4 && forestScenario==true) {
+
+   if (id==4 && forestScenario==true || id==10 && dragonNotified==true || id==13 && dragonNotified==true) {
         id=pages[id].else;
    }
-};
-
-    //not Working:
-//Change variables if a page is reached.
-function setState() {
-    if (pages[id].setState == true) {
-        state = Object.assign(state, pages[id].setState.set);
-        console.log(state)
-    }
+   if (id==11) {
+        dragonNotified=true;
+        if (teaSet==true) {
+            id=pages[id].else;
+        }
+   }
 };
 
 //run the program

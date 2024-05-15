@@ -41,3 +41,13 @@ Work total: 13h.
       - Had the intro pictures functional at some point during this stage.
       - Broke the showPage somehow.
   Work total: 18h.
+
+- 2024-05-15 worked for 1.5 hours at school
+      - Got intro picture functional again
+      - Unbroke showPage()
+      - added specific conditions in checkRequirements() by if-statements
+  Work total: 19.5h.
+
+- 2024-05-15 worked for 1.5 hours
+      - Added more specific conditions
+      - Added more pages

@@ -76,15 +76,16 @@ const pages = [
         options: [
             {op: "Attack", next: 9},
             {op: "Knock", next: 10},
-            {op: "Wait for it to leave", next: 13}
+            {op: "Wait for it to leave", next: 13},
+            {op: "Go back", next: 3}
         ]
     },
     {
         id: 9,
         text: "You brandish your sword. How do you attack?",
         options: [
-        {op: "With your hood low... sneaky.", next: 18},
-        {op: "You charge... FOR GLORY!", next:22}
+        {op: "With your hood low... sneaky.", next: 16},
+        {op: "You charge... FOR GLORY!", next:20}
         ]
     }, 
     {
@@ -106,30 +107,69 @@ const pages = [
     },
     {
         id:13,
-        else: 16,
+        else: 15,
         text: "You hide behind a big rock and bide your time. Eventually the dragon leaves it's lair and flies away - giving you full access to set something up...",
         options: [
-            {op: "Ambush!", next: 18}
+            {op: "Ambush!", next: 16},
+            //If teaSet==true
+            {op: "Tea set", next: 17},
+            //if trap==true
+            {op: "Trap", next: 14}
         ]
     },
     {
-        id: 18,
-        else: 27,
+        id:14,
+        text: "Success! The dragon returns and sets off the trap. How do you proceed?",
+        options: [
+            {op: "Mercy!", next: 18},
+            {op: "Death!", next: 19}
+        ]
+    },
+    {
+        id:15,
+        text: "The dragon won't leave! How do you proceed",
+        options: [
+            {op: "Attack", next: 9},
+            {op: "Knock", next: 10},
+            {op: "Go back", next: 3}
+        ]
+    },
+    {
+        id: 16,
+        else: 22,
         text: "Your sneaky ambush is succesfull in giving you the upper hand and helps you slay the dragon and complete your task. The town is safe!",
         options: [{op: "Play again", next:-1}]
     },
     {
+        id:17,
+        text: "When the dragon returns you smile and offer them a cup of steaming tea. Hesitant but intruiged the dragon entertains you and soon laughter and comfortable conversation echo through out the lair.  You present the villagers perspective and you both agree on some terms. The dragon won't attack the village and you'll stop by from time to time for some afternoon-tea.",
+        options: [{op: "Play again", next: -1}]
+    },
+    {
+        id:18,
+        text: "Before you release the dragon from your trap you set your terms: the village will no longer be part of its hunting grounds and you'll walk out of here safely. Reluctantly the dragon agrees - mercy for mercy.",
+        options: [{op: "play again", next: -1}]
+    },
+    {
         id: 19,
+        text: "You know any promises made today won't be guaranteed tomorrow. With fierce determination you bring down your sword and finish your quest: the village is safe!",
+        options: [{op: "Play again", next:-1}]
+    },
+    {
+        id: 20,
+        text: "You charge into the dragon's lair and seriously overestimate your own ability to fight an adult dragon without a solid plan. You're dead.",
+        options: [{op: "reset", next:-1}]
+    },
+    {
+        id: 21,
         text: "You'd been warned not to show yourself again. You pay the consequences and are greeted by burning hot flames. You're dead.",
         options: [{op: "reset", next:-1}]
     },
     {
-        id: 24,
-        text: "The dragon knew you were coming.",
+        id: 22,
+        text: "You'd been warned not to show yourself again. You pay the consequences and are greeted by burning hot flames. You're dead.",
         options: [{op: "reset", next:-1}]
-    },
-
-
+    }
 ]
 
 //Creating the functions:
@@ -141,18 +181,23 @@ checkRequirements();
 //reset if id<0
     if (id<0) {
         id=0;
-        state = {};
+        forestScenario = false;
+        teaSet = false;
+        trap = false;
+        dragonNotified = false;
         showPage();
     }
 //show picture if id>2
     if (pages[id].image) {
         picturebox.src = pages[id].image;
         picturebox.display="";
+        picturebox.style.borderWidth="";
     }
     //not working:
     else {
         picturebox.display="none";
         picturebox.src="";
+        picturebox.style.borderWidth=0;
     }
 //show text & options
 textbox.innerText = pages[id].text;

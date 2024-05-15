@@ -40,7 +40,7 @@ const pages = [
         text: "You come to a crossroads. Where do you go?",
         options: [
             {op:"Forest", next:4}, 
-            {op:"Mountains", next:9}
+            {op:"Mountains", next:10}
         ]
     },
     {
@@ -71,8 +71,18 @@ const pages = [
     },
     {
         id: 9,
-        text: "You go to the mountains and kill the dragon. Good job!",
-        options: [{op: "Reset", next:-1}]
+        text: "You journey to the dragon's lair. How do you approach?",
+        options: [
+            {op: "Attack", next: 10},
+            {op: "Knock", next: 3}
+        ]
+    },
+    {
+        id: 10,
+        text: "something",
+        options: [
+        {op: "go back", next: 4}
+        ]
     }
 
 ]
@@ -96,8 +106,8 @@ function showPage() {
     //not working:
     else {
         picturebox.display="none";
+        picturebox.src="";
     }
-console.log("img src="+ pages[id].image);
 //show text & options
 textbox.innerText = pages[id].text;
 console.log(pages[id].text);
@@ -159,7 +169,8 @@ function nextPage(){
 };
 
 //Check requirements for a page
-/* function checkRequirements(){
+    //not working:
+function checkRequirements(){
     console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
         "Trap = " + trap + "\n" + 
@@ -168,8 +179,9 @@ function nextPage(){
         id=pages[id].else;
    }
 showPage()
-}; */
+};
 
+    //not Working:
 /* //Change variables if a page is reached.
 function setState() {
     if (pages[id].setState == true) {

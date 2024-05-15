@@ -11,9 +11,6 @@ var ob4 = document.getElementById('ob4')
 var optionButtons = [ob1, ob2, ob3, ob4];
 var id=0;
 
-//Set an empty state for the player
-var state = {};
-
 
 //Creating the array with game-pages as objects:
 const pages = [
@@ -40,13 +37,13 @@ const pages = [
         text: "You come to a crossroads. Where do you go?",
         options: [
             {op:"Forest", next:4}, 
-            {op:"Mountains", next:10}
+            {op:"Mountains", next:8}
         ]
     },
     {
         id:4,
         else: 7,
-        setState: forestScenario=true,
+        setState: {set: forestScenario=true},
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -56,13 +53,15 @@ const pages = [
     },
     {
         id:5,
+        setState: teaSet = true,
         text: "You step in between the fleeing fairy and scare off the hunters. The fairy thanks you and magically produces a thank-you-gift in the shape of a porceline tea set. You gratefully accept and get on your way.",
-        options:[{op:"Go back", next:3, setState: teaSet=true}]
+        options:[{op:"Go back", next:3}]
     },
     {
         id: 6,
+        setState: trap = true,
         text: "You block the fairy and help the hunters put her in a cage knowing the profit on fairy-dust. The hunters thank you by giving you one of their traps. It needs some time to set up but maybe you can use it.",
-        options:[{op:"Go back", next:3, setState: trap=true}]
+        options:[{op:"Go back", next:3}]
     },
     {
         id: 7,
@@ -79,14 +78,27 @@ const pages = [
     },
     {
         id: 9,
-        text: "something",
+        text: "You brandish your sword. How do you attack?",
         options: [
-        {op: "go back", next: 4}
+        {op: "With your hood low... sneaky.", next: 21},
+        {op: "You charge... FOR GLORY!", next:3}
+        ]
+    },
+    {
+        id: 21,
+        text: "Your sneaky approach gains you the upper hand.",
+        options: [
+            {op: "reset", next:-1}
         ]
     }
 
 ]
 
+//Set an empty state for the player
+var state = {}
+var forestScenario = false;
+var teaSet = false;
+var trap = false;
 
 //Creating the functions:
 
@@ -134,7 +146,7 @@ if (ob4.innerText == "") {
 ob4.style.display = "none";
 }
 else {ob4.style.display=""};
-//setState();
+setState();
 }
 
 //Changes values to show the next page
@@ -185,13 +197,12 @@ function checkRequirements(){
 
     //not Working:
 //Change variables if a page is reached.
-/* function setState() {
+function setState() {
     if (pages[id].setState == true) {
-        state = Object.assign(state, pages[id].setState);
+        state = Object.assign(state, pages[id].setState.set);
         console.log(state)
     }
-}; */
-
+};
 
 //run the program
 showPage();

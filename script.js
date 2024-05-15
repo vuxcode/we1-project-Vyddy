@@ -45,8 +45,8 @@ const pages = [
     },
     {
         id:4,
-        else: 8,
-        //setState: forestScenario=true,
+        else: 7,
+        setState: forestScenario=true,
         text: "You come across a fleeing fairy. Behind her you see greedy hunters chasing close behind. What do you do?",
         options: [
             {op:"Help the fairy", next: 5},
@@ -65,20 +65,20 @@ const pages = [
         options:[{op:"Go back", next:3, setState: trap=true}]
     },
     {
-        id: 8,
+        id: 7,
         text: "There's no one left.",
         options: [{op: "Go back", next:3}]
     },
     {
-        id: 9,
+        id: 8,
         text: "You journey to the dragon's lair. How do you approach?",
         options: [
-            {op: "Attack", next: 10},
+            {op: "Attack", next: 9},
             {op: "Knock", next: 3}
         ]
     },
     {
-        id: 10,
+        id: 9,
         text: "something",
         options: [
         {op: "go back", next: 4}
@@ -92,6 +92,8 @@ const pages = [
 
 //Updates the board to the correct page
 function showPage() {
+//check requirements
+checkRequirements();
 //reset if id<0
     if (id<0) {
         id=0;
@@ -173,17 +175,17 @@ function nextPage(){
 function checkRequirements(){
     console.log("forestScenario = " + forestScenario + "\n" + 
         "TeaSet = " + teaSet + "\n" + 
-        "Trap = " + trap + "\n" + 
-        "dragonNoticed = " + dragonNoticed);
+        "Trap = " + trap + "\n" 
+       //"dragonNoticed = " + dragonNoticed
+    );
    if (id==4 && forestScenario==true) {
         id=pages[id].else;
    }
-showPage()
 };
 
     //not Working:
-/* //Change variables if a page is reached.
-function setState() {
+//Change variables if a page is reached.
+/* function setState() {
     if (pages[id].setState == true) {
         state = Object.assign(state, pages[id].setState);
         console.log(state)

@@ -39,7 +39,7 @@ li button {
     font-size: large;
 }
 li :hover {
-    background-color: #682D34;
+    background-color: #7f7f7f;
     cursor: pointer;
 }
 /*Game*/
@@ -49,8 +49,9 @@ li :hover {
     align-items: center;
 }
 .story {
-    border-width: 2px;
-    border-style: solid;
+    border-width: 5px;
+    border-style: groove;
+    border-color: #682D34;
     text-align: center;
     margin-top: 10px;
     background-color: white;
@@ -68,13 +69,12 @@ li :hover {
     width:75%;
 }
 .optionButton {
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
+    border-style: groove;
+    border-color: #682D34;
+    border-width: 5px;
     padding: 15px;
     transition-duration: 0.4s;
 }
 .optionButton:hover {
-    background-color: black;
-    color: white;
+    background-color: #7f7f7f;
 }

@@ -102,6 +102,7 @@ const pages = [
     },
     {
         id: 12,
+        image: "victory.png",
         text: "The conversation starts out with some stiff small-talk until you remember the tea set and ask if you may prepare some tea. Hesitantly the dragon agrees and not long after friendly conversation comes easily. You present the villagers perspective and you both agree on some terms. The dragon won't attack the village and you'll stop by from time to time for some afternoon-tea.",
         options: [{op: "Play again", next:-1}]
     },
@@ -137,37 +138,44 @@ const pages = [
     {
         id: 16,
         else: 22,
+        image: "victory.png",
         text: "Your sneaky ambush is succesfull in giving you the upper hand and helps you slay the dragon and complete your task. The town is safe!",
         options: [{op: "Play again", next:-1}]
     },
     {
         id:17,
+        image: "victory.png",
         text: "When the dragon returns you smile and offer them a cup of steaming tea. Hesitant but intruiged the dragon entertains you and soon laughter and comfortable conversation echo through out the lair.  You present the villagers perspective and you both agree on some terms. The dragon won't attack the village and you'll stop by from time to time for some afternoon-tea.",
         options: [{op: "Play again", next: -1}]
     },
     {
         id:18,
+        image: "victory.png",
         text: "Before you release the dragon from your trap you set your terms: the village will no longer be part of its hunting grounds and you'll walk out of here safely. Reluctantly the dragon agrees - mercy for mercy.",
         options: [{op: "Play again", next: -1}]
     },
     {
         id: 19,
+        image: "victory.png",
         text: "You know any promises made today won't be guaranteed tomorrow. With fierce determination you bring down your sword and finish your quest: the village is safe!",
         options: [{op: "Play again", next:-1}]
     },
     {
         id: 20,
+        image: "defeat.png",
         text: "You charge into the dragon's lair and seriously overestimate your own ability to fight an adult dragon without a solid plan. You're dead.",
         options: [{op: "reset", next:-1}]
     },
     {
         id: 21,
+        image: "defeat.png",
         text: "You'd been warned not to show yourself again. You pay the consequences and are greeted by burning hot flames. You're dead.",
         options: [{op: "reset", next:-1}]
     },
     {
         id: 22,
-        text: "You'd been warned not to show yourself again. You pay the consequences and are greeted by burning hot flames. You're dead.",
+        image: "defeat.png",
+        text: "The dragon knew you were coming and ambushes you. You're dead.",
         options: [{op: "reset", next:-1}]
     }
 ]

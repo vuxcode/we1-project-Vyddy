@@ -9,7 +9,7 @@ nav {
     margin: 20px;
 }
 body {
-    background-color: gray;
+    background-color: black;
 }
 ul {
     list-style-type: none;
@@ -39,16 +39,14 @@ li button {
     font-size: large;
 }
 li :hover {
-    background-color: gainsboro;
+    background-color: #682D34;
     cursor: pointer;
 }
 /*Game*/
 .game {
     width: 800px;
     margin: auto;
-}
-.board {
-    background-color: grey;
+    align-items: center;
 }
 .story {
     border-width: 2px;

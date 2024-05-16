@@ -51,3 +51,9 @@ Work total: 13h.
 - 2024-05-15 worked for 1.5 hours
       - Added more specific conditions
       - Added more pages
+work total: 21h.
+
+- 2024-05-16 worked for 3 hours
+      - Removed placeholders and added pictures.
+      - Changed the colour-scheme.
+      - Changed display to flex on preview and added more elements to center content.

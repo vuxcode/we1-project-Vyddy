@@ -43,14 +43,22 @@ li :hover {
     cursor: pointer;
 }
 /*Game*/
+*{
+    box-sizing: border-box;
+}
 .game {
     width: 800px;
     margin: auto;
     align-items: center;
 }
+.board {
+    width: 600px;
+    margin: 0 100px;
+}
 .story {
     border-width: 5px;
     border-style: groove;
+    width: 600px;
     border-color: #682D34;
     text-align: center;
     margin-top: 10px;
@@ -58,15 +66,15 @@ li :hover {
 }
 #textbox {
     padding: 30px;
-    width: 540px;
+    width: 600px;
     height: fit-content;
     margin-bottom: 15px;
 }
 .options {
     display: grid;
     grid-template-columns: repeat(2, auto);
+    justify-items: stretch;
     gap: 15px;
-    width:75%;
 }
 .optionButton {
     border-style: groove;

@@ -216,7 +216,7 @@ ob4.innerText = pages[id].options?.[3]?.op||"";
 //Hides the unused buttons
 if (ob2.innerText == "") {
     ob2.style.display = "none";
-    ob1.style.width = "604px";
+    ob1.style.width = "600px";
 }
 else {
     ob2.style.display="block"; 

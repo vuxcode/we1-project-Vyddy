@@ -22,3 +22,4 @@
 //Webbutveckling
 1. Nav buttons in gamepage.html aren't the right size.
 2. class=board in gamepage.html isn't centered on the page despite using "margin:auto".
+   - fixed by box-sizing and not keeping the .board the same width as .game
